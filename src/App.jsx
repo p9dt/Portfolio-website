@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import { Linkedin, Github, Mail, ChevronDown, ExternalLink } from 'lucide-react';
-import profileImage from '../public/IMG_6201.JPG.jpeg';
 
 export default function App() {
   const canvasRef = useRef(null);
@@ -113,7 +112,7 @@ export default function App() {
         <div className="relative group shrink-0">
           <div className="absolute inset-0 bg-white/5 rounded-full blur-2xl group-hover:bg-white/10 transition-all duration-700"></div>
           <img
-            src={profileImage}
+            src="/IMG_6201.JPG.jpeg"
             alt="Mayank Sharma"
             className="w-64 h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-full object-cover shadow-2xl border-[3px] border-[#222] relative z-10"
           />
