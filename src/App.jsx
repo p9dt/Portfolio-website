@@ -46,9 +46,9 @@ export default function App() {
         
         ctx.beginPath();
         ctx.strokeStyle = neuron.firing 
-          ? `rgba(100, 200, 255, ${opacity * (1 - firingProgress) * 0.8})`
-          : `rgba(200, 220, 255, ${opacity * 0.4})`;
-        ctx.lineWidth = Math.max(0.5, depth * 0.6);
+          ? `rgba(100, 180, 255, ${opacity * (1 - firingProgress) * 0.4})`
+          : `rgba(150, 180, 220, ${opacity * 0.15})`;
+        ctx.lineWidth = Math.max(0.3, depth * 0.4);
         ctx.lineCap = 'round';
         ctx.moveTo(x, y);
         ctx.lineTo(endX, endY);
@@ -73,37 +73,31 @@ export default function App() {
         drawDendrite(neuron.x, neuron.y, angle, initialLength, 3, 1);
       }
       
-      // Draw soma (cell body) with glow
-      const somaRadius = neuron.soma + (neuron.firing ? firingProgress * 1.5 : 0);
+      // Draw soma (cell body) with subtle glow
+      const somaRadius = neuron.soma + (neuron.firing ? firingProgress * 1 : 0);
       
       if (neuron.firing) {
-        // Outer glow
+        // Subtle outer glow
         ctx.beginPath();
-        ctx.arc(neuron.x, neuron.y, somaRadius + 8, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(100, 200, 255, ${0.15 * (1 - firingProgress)})`;
-        ctx.fill();
-        
-        // Middle glow
-        ctx.beginPath();
-        ctx.arc(neuron.x, neuron.y, somaRadius + 4, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(100, 200, 255, ${0.3 * (1 - firingProgress)})`;
+        ctx.arc(neuron.x, neuron.y, somaRadius + 6, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(100, 180, 255, ${0.08 * (1 - firingProgress)})`;
         ctx.fill();
       }
       
-      // Main soma
+      // Main soma - more subtle
       ctx.beginPath();
       ctx.arc(neuron.x, neuron.y, somaRadius, 0, Math.PI * 2);
       
       if (neuron.firing) {
-        ctx.fillStyle = `rgba(100, 200, 255, ${0.9})`;
+        ctx.fillStyle = `rgba(100, 180, 255, ${0.5})`;
       } else {
-        ctx.fillStyle = 'rgba(150, 200, 255, 0.8)';
+        ctx.fillStyle = 'rgba(120, 160, 220, 0.25)';
       }
       ctx.fill();
       
-      // Soma border
-      ctx.strokeStyle = neuron.firing ? 'rgba(150, 220, 255, 0.8)' : 'rgba(200, 220, 255, 0.5)';
-      ctx.lineWidth = 1;
+      // Very subtle soma border
+      ctx.strokeStyle = neuron.firing ? 'rgba(120, 180, 255, 0.4)' : 'rgba(140, 170, 220, 0.15)';
+      ctx.lineWidth = 0.5;
       ctx.stroke();
     };
 
@@ -150,18 +144,18 @@ export default function App() {
 
           if (distance < 150) {
             ctx.beginPath();
-            const baseOpacity = 0.15 - distance / 1500;
+            const baseOpacity = 0.08 - distance / 3000;
             
             // Synapse lights up when either neuron fires
             if (n.firing || n2.firing) {
               const progressN = n.firing ? n.fireTime / n.fireDuration : 0;
               const progressN2 = n2.firing ? n2.fireTime / n2.fireDuration : 0;
               const progress = Math.max(progressN, progressN2);
-              ctx.strokeStyle = `rgba(100, 200, 255, ${baseOpacity + 0.4 * (1 - progress)})`;
-              ctx.lineWidth = 1.5;
+              ctx.strokeStyle = `rgba(100, 180, 255, ${baseOpacity + 0.2 * (1 - progress)})`;
+              ctx.lineWidth = 1;
             } else {
-              ctx.strokeStyle = `rgba(255, 255, 255, ${baseOpacity})`;
-              ctx.lineWidth = 0.5;
+              ctx.strokeStyle = `rgba(140, 170, 220, ${baseOpacity})`;
+              ctx.lineWidth = 0.3;
             }
             
             ctx.moveTo(n.x, n.y);
@@ -193,6 +187,7 @@ export default function App() {
       <canvas 
         ref={canvasRef} 
         className="fixed inset-0 z-0 pointer-events-none"
+        style={{ filter: 'blur(0.8px)' }}
       />
 
       {/* Sticky Navigation */}
