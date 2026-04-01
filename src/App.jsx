@@ -37,43 +37,74 @@ export default function App() {
     const drawNeuron = (neuron) => {
       const firingProgress = neuron.fireTime / neuron.fireDuration;
       
-      // Draw axon/dendrites (branching lines)
-      const branchCount = 3;
-      for (let i = 0; i < branchCount; i++) {
-        const angle = (i / branchCount) * Math.PI * 2;
-        const length = 30 + (neuron.firing ? firingProgress * 15 : 0);
-        const endX = neuron.x + Math.cos(angle) * length;
-        const endY = neuron.y + Math.sin(angle) * length;
+      // Draw dendrites with recursive branching
+      const drawDendrite = (x, y, angle, length, depth, opacity) => {
+        if (depth === 0 || length < 2) return;
+        
+        const endX = x + Math.cos(angle) * length;
+        const endY = y + Math.sin(angle) * length;
         
         ctx.beginPath();
         ctx.strokeStyle = neuron.firing 
-          ? `rgba(100, 200, 255, ${0.6 * (1 - firingProgress)})`
-          : 'rgba(255, 255, 255, 0.2)';
-        ctx.lineWidth = neuron.firing ? 2 : 1;
-        ctx.moveTo(neuron.x, neuron.y);
+          ? `rgba(100, 200, 255, ${opacity * (1 - firingProgress) * 0.8})`
+          : `rgba(200, 220, 255, ${opacity * 0.4})`;
+        ctx.lineWidth = Math.max(0.5, depth * 0.6);
+        ctx.lineCap = 'round';
+        ctx.moveTo(x, y);
         ctx.lineTo(endX, endY);
         ctx.stroke();
+        
+        // Branch into 2-3 sub-dendrites
+        if (depth > 1) {
+          const branchCount = depth > 2 ? 3 : 2;
+          for (let i = 0; i < branchCount; i++) {
+            const branchAngle = (i - (branchCount - 1) / 2) * 0.5;
+            const newAngle = angle + branchAngle;
+            drawDendrite(endX, endY, newAngle, length * 0.65, depth - 1, opacity * 0.8);
+          }
+        }
+      };
+      
+      // Draw multiple dendrites from soma
+      const dendriteCount = 5 + (neuron.firing ? 2 : 0);
+      for (let i = 0; i < dendriteCount; i++) {
+        const angle = (i / dendriteCount) * Math.PI * 2;
+        const initialLength = 35 + (neuron.firing ? firingProgress * 10 : 0);
+        drawDendrite(neuron.x, neuron.y, angle, initialLength, 3, 1);
       }
       
-      // Draw soma (cell body)
-      ctx.beginPath();
-      ctx.arc(neuron.x, neuron.y, neuron.soma, 0, Math.PI * 2);
+      // Draw soma (cell body) with glow
+      const somaRadius = neuron.soma + (neuron.firing ? firingProgress * 1.5 : 0);
       
       if (neuron.firing) {
-        // Firing: bright blue glow
-        ctx.fillStyle = `rgba(100, 200, 255, ${0.8 + firingProgress * 0.4})`;
-        // Add glow
-        ctx.shadowColor = 'rgba(100, 200, 255, 0.8)';
-        ctx.shadowBlur = 20;
+        // Outer glow
+        ctx.beginPath();
+        ctx.arc(neuron.x, neuron.y, somaRadius + 8, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(100, 200, 255, ${0.15 * (1 - firingProgress)})`;
+        ctx.fill();
+        
+        // Middle glow
+        ctx.beginPath();
+        ctx.arc(neuron.x, neuron.y, somaRadius + 4, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(100, 200, 255, ${0.3 * (1 - firingProgress)})`;
+        ctx.fill();
+      }
+      
+      // Main soma
+      ctx.beginPath();
+      ctx.arc(neuron.x, neuron.y, somaRadius, 0, Math.PI * 2);
+      
+      if (neuron.firing) {
+        ctx.fillStyle = `rgba(100, 200, 255, ${0.9})`;
       } else {
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
-        ctx.shadowColor = 'transparent';
-        ctx.shadowBlur = 0;
+        ctx.fillStyle = 'rgba(150, 200, 255, 0.8)';
       }
       ctx.fill();
       
-      ctx.shadowColor = 'transparent';
-      ctx.shadowBlur = 0;
+      // Soma border
+      ctx.strokeStyle = neuron.firing ? 'rgba(150, 220, 255, 0.8)' : 'rgba(200, 220, 255, 0.5)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
     };
 
     const animate = () => {
