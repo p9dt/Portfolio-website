@@ -109,12 +109,13 @@ export default function App() {
       <main id="home" className="relative z-10 min-h-screen flex flex-col items-center justify-center pt-24 px-6 gap-12 md:gap-24 w-full max-w-6xl mx-auto md:flex-row">
         
         {/* Profile Image */}
-        <div className="relative group shrink-0">
-          <div className="absolute inset-0 bg-white/5 rounded-full blur-2xl group-hover:bg-white/10 transition-all duration-700"></div>
+        <div className="relative shrink-0">
+          <div className="absolute inset-0 bg-white/20 rounded-full blur-3xl"></div>
+          <div className="absolute inset-0 bg-blue-400/10 rounded-full blur-2xl"></div>
           <img
             src="/IMG_6201.JPG.jpeg"
             alt="Mayank Sharma"
-            className="w-64 h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-full object-cover shadow-2xl border-[3px] border-[#222] relative z-10"
+            className="w-64 h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-full object-cover shadow-2xl border-[3px] border-[#222] relative z-10" style={{boxShadow: '0 0 60px rgba(255, 255, 255, 0.3), 0 0 40px rgba(100, 200, 255, 0.2)'}}
           />
         </div>
 
