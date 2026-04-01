@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Linkedin, Github, Mail, ChevronDown, ExternalLink } from 'lucide-react';
+import { Linkedin, Github, Mail, ChevronDown, ExternalLink, Phone } from 'lucide-react';
 
 export default function App() {
   const canvasRef = useRef(null);
@@ -140,6 +140,9 @@ export default function App() {
             </a>
             <a href="mailto:ep23bt009@iitdh.ac.in" className="glow-hover bg-[#1f1f1f] p-3.5 rounded-full hover:bg-gray-700 hover:scale-110 transition-all duration-300 group">
               <Mail className="w-6 h-6 text-gray-300 group-hover:text-white" strokeWidth={1.5} />
+            </a>
+            <a href="tel:+919634778805" className="glow-hover bg-[#1f1f1f] p-3.5 rounded-full hover:bg-gray-700 hover:scale-110 transition-all duration-300 group">
+              <Phone className="w-6 h-6 text-gray-300 group-hover:text-white" strokeWidth={1.5} />
             </a>
           </div>
         </div>
