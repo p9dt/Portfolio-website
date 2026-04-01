@@ -4,63 +4,137 @@ import { Linkedin, Github, Mail, ChevronDown, ExternalLink, Phone, Globe } from 
 export default function App() {
   const canvasRef = useRef(null);
 
-  // Particle network background effect
+  // Neuron network background effect
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     
     const ctx = canvas.getContext('2d');
     let animationFrameId;
-    let particles = [];
+    let neurons = [];
 
     const initCanvas = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      particles = [];
-      const particleCount = Math.floor((window.innerWidth * window.innerHeight) / 15000); // Responsive density
+      neurons = [];
+      const neuronCount = Math.floor((window.innerWidth * window.innerHeight) / 20000); // Responsive density
 
-      for (let i = 0; i < particleCount; i++) {
-        particles.push({
+      for (let i = 0; i < neuronCount; i++) {
+        neurons.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.5,
-          vy: (Math.random() - 0.5) * 0.5,
-          radius: Math.random() * 1.5 + 0.5
+          vx: (Math.random() - 0.5) * 0.3,
+          vy: (Math.random() - 0.5) * 0.3,
+          soma: 2.5, // soma radius
+          firing: false,
+          fireTime: 0,
+          fireDuration: 200, // ms
+          nextFireTime: Math.random() * 5000 + 2000 // Random fire delay
         });
       }
+    };
+
+    const drawNeuron = (neuron) => {
+      const firingProgress = neuron.fireTime / neuron.fireDuration;
+      
+      // Draw axon/dendrites (branching lines)
+      const branchCount = 3;
+      for (let i = 0; i < branchCount; i++) {
+        const angle = (i / branchCount) * Math.PI * 2;
+        const length = 30 + (neuron.firing ? firingProgress * 15 : 0);
+        const endX = neuron.x + Math.cos(angle) * length;
+        const endY = neuron.y + Math.sin(angle) * length;
+        
+        ctx.beginPath();
+        ctx.strokeStyle = neuron.firing 
+          ? `rgba(100, 200, 255, ${0.6 * (1 - firingProgress)})`
+          : 'rgba(255, 255, 255, 0.2)';
+        ctx.lineWidth = neuron.firing ? 2 : 1;
+        ctx.moveTo(neuron.x, neuron.y);
+        ctx.lineTo(endX, endY);
+        ctx.stroke();
+      }
+      
+      // Draw soma (cell body)
+      ctx.beginPath();
+      ctx.arc(neuron.x, neuron.y, neuron.soma, 0, Math.PI * 2);
+      
+      if (neuron.firing) {
+        // Firing: bright blue glow
+        ctx.fillStyle = `rgba(100, 200, 255, ${0.8 + firingProgress * 0.4})`;
+        // Add glow
+        ctx.shadowColor = 'rgba(100, 200, 255, 0.8)';
+        ctx.shadowBlur = 20;
+      } else {
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+        ctx.shadowColor = 'transparent';
+        ctx.shadowBlur = 0;
+      }
+      ctx.fill();
+      
+      ctx.shadowColor = 'transparent';
+      ctx.shadowBlur = 0;
     };
 
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      // Update and draw particles
-      for (let i = 0; i < particles.length; i++) {
-        let p = particles[i];
-        p.x += p.vx;
-        p.y += p.vy;
+      const currentTime = Date.now();
+      
+      // Update and draw neurons
+      for (let i = 0; i < neurons.length; i++) {
+        let n = neurons[i];
+        n.x += n.vx;
+        n.y += n.vy;
 
         // Bounce off edges
-        if (p.x < 0 || p.x > canvas.width) p.vx = -p.vx;
-        if (p.y < 0 || p.y > canvas.height) p.vy = -p.vy;
+        if (n.x - 50 < 0 || n.x + 50 > canvas.width) n.vx = -n.vx;
+        if (n.y - 50 < 0 || n.y + 50 > canvas.height) n.vy = -n.vy;
 
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
-        ctx.fill();
+        // Clamp to bounds
+        n.x = Math.max(50, Math.min(canvas.width - 50, n.x));
+        n.y = Math.max(50, Math.min(canvas.height - 50, n.y));
 
-        // Connect particles
-        for (let j = i + 1; j < particles.length; j++) {
-          let p2 = particles[j];
-          let dx = p.x - p2.x;
-          let dy = p.y - p2.y;
+        // Update firing state
+        if (n.firing) {
+          n.fireTime += 16;
+          if (n.fireTime >= n.fireDuration) {
+            n.firing = false;
+            n.fireTime = 0;
+            n.nextFireTime = currentTime + Math.random() * 5000 + 2000;
+          }
+        } else if (currentTime >= n.nextFireTime && Math.random() > 0.98) {
+          n.firing = true;
+          n.fireTime = 0;
+        }
+
+        drawNeuron(n);
+
+        // Connect neurons with synapses
+        for (let j = i + 1; j < neurons.length; j++) {
+          let n2 = neurons[j];
+          let dx = n.x - n2.x;
+          let dy = n.y - n2.y;
           let distance = Math.sqrt(dx * dx + dy * dy);
 
           if (distance < 150) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(255, 255, 255, ${0.15 - distance / 1000})`;
-            ctx.lineWidth = 0.5;
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(p2.x, p2.y);
+            const baseOpacity = 0.15 - distance / 1500;
+            
+            // Synapse lights up when either neuron fires
+            if (n.firing || n2.firing) {
+              const progressN = n.firing ? n.fireTime / n.fireDuration : 0;
+              const progressN2 = n2.firing ? n2.fireTime / n2.fireDuration : 0;
+              const progress = Math.max(progressN, progressN2);
+              ctx.strokeStyle = `rgba(100, 200, 255, ${baseOpacity + 0.4 * (1 - progress)})`;
+              ctx.lineWidth = 1.5;
+            } else {
+              ctx.strokeStyle = `rgba(255, 255, 255, ${baseOpacity})`;
+              ctx.lineWidth = 0.5;
+            }
+            
+            ctx.moveTo(n.x, n.y);
+            ctx.lineTo(n2.x, n2.y);
             ctx.stroke();
           }
         }
