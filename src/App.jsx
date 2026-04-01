@@ -112,7 +112,7 @@ export default function App() {
         <div className="relative group shrink-0">
           <div className="absolute inset-0 bg-white/5 rounded-full blur-2xl group-hover:bg-white/10 transition-all duration-700"></div>
           <img
-            src="/IMG_6201.JPG.jpeg"
+            src="Public\IMG_6201.JPG.jpeg"
             alt="Mayank Sharma"
             className="w-64 h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-full object-cover shadow-2xl border-[3px] border-[#222] relative z-10"
           />
@@ -131,13 +131,13 @@ export default function App() {
           
           {/* Social Icons */}
           <div className="flex space-x-4 mt-8">
-            <a href="https://www.linkedin.com/in/mayank-sharma-aa3648287/" target="_blank" rel="noreferrer" className="bg-[#1f1f1f] p-3.5 rounded-full hover:bg-gray-700 hover:scale-110 transition-all duration-300 group">
+            <a href="https://www.linkedin.com/in/mayank-sharma-aa3648287/" target="_blank" rel="noreferrer" className="glow-hover bg-[#1f1f1f] p-3.5 rounded-full hover:bg-gray-700 hover:scale-110 transition-all duration-300 group">
               <Linkedin className="w-6 h-6 text-gray-300 group-hover:text-white" strokeWidth={1.5} />
             </a>
-            <a href="https://github.com/p9dt" target="_blank" rel="noreferrer" className="bg-[#1f1f1f] p-3.5 rounded-full hover:bg-gray-700 hover:scale-110 transition-all duration-300 group">
+            <a href="https://github.com/p9dt" target="_blank" rel="noreferrer" className="glow-hover bg-[#1f1f1f] p-3.5 rounded-full hover:bg-gray-700 hover:scale-110 transition-all duration-300 group">
               <Github className="w-6 h-6 text-gray-300 group-hover:text-white" strokeWidth={1.5} />
             </a>
-            <a href="mailto:ep23bt009@iitdh.ac.in" className="bg-[#1f1f1f] p-3.5 rounded-full hover:bg-gray-700 hover:scale-110 transition-all duration-300 group">
+            <a href="mailto:ep23bt009@iitdh.ac.in" className="glow-hover bg-[#1f1f1f] p-3.5 rounded-full hover:bg-gray-700 hover:scale-110 transition-all duration-300 group">
               <Mail className="w-6 h-6 text-gray-300 group-hover:text-white" strokeWidth={1.5} />
             </a>
           </div>
@@ -157,7 +157,7 @@ export default function App() {
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold text-white mb-12 tracking-widest lowercase">about</h2>
           
-          <div className="mb-12 bg-white/5 p-6 rounded-lg border border-white/10">
+          <div className="mb-12 glow-hover bg-white/5 p-6 rounded-lg border border-white/10">
             <p className="text-gray-300 leading-relaxed mb-4">
               Hello! I am an undergraduate student pursuing my degree in Engineering Physics at IIT Dharwad.
             </p>
@@ -174,7 +174,7 @@ export default function App() {
 
           <div>
             <h3 className="text-xl font-bold text-white mb-4">Education</h3>
-            <div className="bg-white/5 p-6 rounded-lg border border-white/10 hover:border-white/20 transition-colors">
+            <div className="glow-hover bg-white/5 p-6 rounded-lg border border-white/10 hover:border-white/20 transition-colors">
               <h4 className="text-lg font-bold text-gray-200">Indian Institute of Technology Dharwad</h4>
               <p className="text-gray-400 mt-1">Bachelor of Technology in Engineering Physics</p>
               <div className="flex justify-between mt-4 text-sm text-gray-500">
@@ -225,7 +225,7 @@ export default function App() {
           
           <div className="space-y-8">
             {/* Paper 1 */}
-            <div className="bg-white/5 p-6 md:p-8 rounded-lg border border-white/10 hover:border-white/20 transition-all group">
+            <div className="glow-hover bg-white/5 p-6 md:p-8 rounded-lg border border-white/10 hover:border-white/20 transition-all group">
               <h3 className="text-lg font-bold text-white leading-snug group-hover:text-blue-400 transition-colors">
                 Resistive Switching and Synapse Properties of Bilayered CuO/MAPЫ3 Nanometer-Thick Films
               </h3>
@@ -241,7 +241,7 @@ export default function App() {
             </div>
 
             {/* Paper 2 */}
-            <div className="bg-white/5 p-6 md:p-8 rounded-lg border border-white/10 hover:border-white/20 transition-all group">
+            <div className="glow-hover bg-white/5 p-6 md:p-8 rounded-lg border border-white/10 hover:border-white/20 transition-all group">
               <h3 className="text-lg font-bold text-white leading-snug group-hover:text-blue-400 transition-colors">
                 Structural engineering of SnS2 nanoflowers for neuromorphic applications
               </h3>
@@ -266,7 +266,7 @@ export default function App() {
           
           <div className="grid md:grid-cols-2 gap-8">
             {/* Project 1 */}
-            <div className="bg-white/5 p-6 rounded-lg border border-white/10 hover:border-white/20 transition-all flex flex-col h-full">
+            <div className="glow-hover bg-white/5 p-6 rounded-lg border border-white/10 hover:border-white/20 transition-all flex flex-col h-full">
               <div className="flex justify-between items-start mb-4">
                 <h3 className="text-xl font-bold text-white">Quantum Variational Classifier for MNIST</h3>
               </div>
@@ -282,7 +282,7 @@ export default function App() {
             </div>
 
             {/* Project 2 */}
-            <div className="bg-white/5 p-6 rounded-lg border border-white/10 hover:border-white/20 transition-all flex flex-col h-full">
+            <div className="glow-hover bg-white/5 p-6 rounded-lg border border-white/10 hover:border-white/20 transition-all flex flex-col h-full">
               <div className="flex justify-between items-start mb-4">
                 <h3 className="text-xl font-bold text-white">Quantum Communication: BB84 & E91 Protocols</h3>
               </div>
@@ -314,7 +314,7 @@ export default function App() {
               </h3>
               <div className="flex flex-wrap gap-3">
                 {['Quantum Physics & Applications', 'Quantum Mechanics I', 'Intro to Quantum Information & Computation', 'Classical Mechanics', 'Statistical Physics', 'Electrodynamics', 'Electricity & Magnetism', 'Advanced Physics Laboratory'].map(course => (
-                  <span key={course} className="bg-white/5 border border-white/10 px-4 py-2 rounded-full text-sm text-gray-300 hover:bg-white/10 transition-colors">
+                  <span key={course} className="glow-hover bg-white/5 border border-white/10 px-4 py-2 rounded-full text-sm text-gray-300 hover:bg-white/10 transition-colors">
                     {course}
                   </span>
                 ))}
@@ -330,7 +330,7 @@ export default function App() {
               </h3>
               <div className="flex flex-wrap gap-3">
                 {['Data Structures and Algorithms', 'Computer Architecture', 'Computer Programming', 'Calculus', 'Linear Algebra', 'Differential Equations I', 'Intro to Probability', 'Data Analysis'].map(course => (
-                  <span key={course} className="bg-white/5 border border-white/10 px-4 py-2 rounded-full text-sm text-gray-300 hover:bg-white/10 transition-colors">
+                  <span key={course} className="glow-hover bg-white/5 border border-white/10 px-4 py-2 rounded-full text-sm text-gray-300 hover:bg-white/10 transition-colors">
                     {course}
                   </span>
                 ))}
@@ -346,7 +346,7 @@ export default function App() {
               </h3>
               <div className="flex flex-wrap gap-3">
                 {['Electronic Devices', 'Signals and Systems', 'Intro to Analog Circuits', 'Digital Systems', 'Digital Signal Processing', 'Intro to Electrical Systems & Electronics'].map(course => (
-                  <span key={course} className="bg-white/5 border border-white/10 px-4 py-2 rounded-full text-sm text-gray-300 hover:bg-white/10 transition-colors">
+                  <span key={course} className="glow-hover bg-white/5 border border-white/10 px-4 py-2 rounded-full text-sm text-gray-300 hover:bg-white/10 transition-colors">
                     {course}
                   </span>
                 ))}
@@ -377,7 +377,7 @@ export default function App() {
                   <h4 className="text-gray-300 font-semibold mb-2">Programming & Libraries</h4>
                   <div className="flex flex-wrap gap-2">
                     {['C/C++', 'Python', 'NumPy', 'Pandas', 'Qiskit', 'PennyLane', 'Cirq'].map(skill => (
-                      <span key={skill} className="bg-white/10 px-3 py-1 rounded text-sm text-gray-300">{skill}</span>
+                      <span key={skill} className="glow-hover bg-white/10 px-3 py-1 rounded text-sm text-gray-300">{skill}</span>
                     ))}
                   </div>
                 </div>
@@ -391,7 +391,7 @@ export default function App() {
                   <h4 className="text-gray-300 font-semibold mb-2">Software & Tools</h4>
                   <div className="flex flex-wrap gap-2">
                     {['MATLAB', 'LTSpice', 'VS Code', 'Jupyter Notebook', 'LaTeX'].map(skill => (
-                      <span key={skill} className="bg-white/10 px-3 py-1 rounded text-sm text-gray-300">{skill}</span>
+                      <span key={skill} className="glow-hover bg-white/10 px-3 py-1 rounded text-sm text-gray-300">{skill}</span>
                     ))}
                   </div>
                 </div>
