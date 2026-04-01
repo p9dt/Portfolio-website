@@ -206,7 +206,7 @@ export default function App() {
             <p className="text-sm text-gray-500 mb-6 font-semibold">May 2025 – Jul 2025</p>
             
             <ul className="list-disc list-outside ml-4 text-gray-300 space-y-3 leading-relaxed">
-              <li>Synthesized and characterized SnS2 nanomaterials and fabricated memristive devices demonstrating synaptic plasticity (PPF, PPD, LTP, LTD).</li>
+              <li>Synthesized and characterized SnS₂ nanomaterials and fabricated memristive devices demonstrating synaptic plasticity (PPF, PPD, LTP, LTD).</li>
               <li>Performed electrical characterization using probe stations and source-measure units; analysed device I-V characteristics and variability.</li>
               <li>Integrated experimentally measured device parameters into neural network models, achieving 95.5% classification accuracy on the MNIST dataset.</li>
             </ul>
@@ -250,7 +250,7 @@ export default function App() {
             {/* Paper 2 */}
             <div className="glow-hover bg-white/5 p-6 md:p-8 rounded-lg border border-white/10 hover:border-white/20 transition-all group">
               <h3 className="text-lg font-bold text-white leading-snug group-hover:text-blue-400 transition-colors">
-                Structural engineering of SnS2 nanoflowers for neuromorphic applications
+                Structural engineering of SnS₂ nanoflowers for neuromorphic applications
               </h3>
               <p className="text-gray-400 mt-3 text-sm leading-relaxed">
                 Megha Rana, Riya Malik, Mandvi Chauhan, <strong className="text-gray-200">Mayank Sharma</strong>, Ruchita Joshi, Omwati Rana, Suraj P. Khanna, Ritu Srivastava, Chandra Kant Suman*
