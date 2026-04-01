@@ -115,7 +115,7 @@ export default function App() {
           <img
             src="/IMG_6201.JPG.jpeg"
             alt="Mayank Sharma"
-            className="w-64 h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-full object-cover shadow-2xl border-[3px] border-[#222] relative z-10" style={{boxShadow: '0 0 60px rgba(255, 255, 255, 0.3), 0 0 40px rgba(100, 200, 255, 0.2)'}}
+            className="w-64 h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-full object-cover shadow-2xl relative z-10" style={{boxShadow: '0 0 60px rgba(255, 255, 255, 0.3), 0 0 40px rgba(100, 200, 255, 0.2)'}}
           />
         </div>
 
