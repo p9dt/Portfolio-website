@@ -4,162 +4,63 @@ import { Linkedin, Github, Mail, ChevronDown, ExternalLink, Phone, Globe } from 
 export default function App() {
   const canvasRef = useRef(null);
 
-  // Neuron network background effect
+  // Particle network background effect
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     
     const ctx = canvas.getContext('2d');
     let animationFrameId;
-    let neurons = [];
+    let particles = [];
 
     const initCanvas = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      neurons = [];
-      const neuronCount = Math.floor((window.innerWidth * window.innerHeight) / 20000); // Responsive density
+      particles = [];
+      const particleCount = Math.floor((window.innerWidth * window.innerHeight) / 15000); // Responsive density
 
-      for (let i = 0; i < neuronCount; i++) {
-        neurons.push({
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.3,
-          vy: (Math.random() - 0.5) * 0.3,
-          soma: 2.5, // soma radius
-          firing: false,
-          fireTime: 0,
-          fireDuration: 200, // ms
-          nextFireTime: Math.random() * 5000 + 2000 // Random fire delay
+          vx: (Math.random() - 0.5) * 0.5,
+          vy: (Math.random() - 0.5) * 0.5,
+          radius: Math.random() * 1.5 + 0.5
         });
       }
-    };
-
-    const drawNeuron = (neuron) => {
-      const firingProgress = neuron.fireTime / neuron.fireDuration;
-      
-      // Draw dendrites with recursive branching
-      const drawDendrite = (x, y, angle, length, depth, opacity) => {
-        if (depth === 0 || length < 2) return;
-        
-        const endX = x + Math.cos(angle) * length;
-        const endY = y + Math.sin(angle) * length;
-        
-        ctx.beginPath();
-        ctx.strokeStyle = neuron.firing 
-          ? `rgba(100, 180, 255, ${opacity * (1 - firingProgress) * 0.4})`
-          : `rgba(150, 180, 220, ${opacity * 0.15})`;
-        ctx.lineWidth = Math.max(0.3, depth * 0.4);
-        ctx.lineCap = 'round';
-        ctx.moveTo(x, y);
-        ctx.lineTo(endX, endY);
-        ctx.stroke();
-        
-        // Branch into 2-3 sub-dendrites
-        if (depth > 1) {
-          const branchCount = depth > 2 ? 3 : 2;
-          for (let i = 0; i < branchCount; i++) {
-            const branchAngle = (i - (branchCount - 1) / 2) * 0.5;
-            const newAngle = angle + branchAngle;
-            drawDendrite(endX, endY, newAngle, length * 0.65, depth - 1, opacity * 0.8);
-          }
-        }
-      };
-      
-      // Draw multiple dendrites from soma
-      const dendriteCount = 5 + (neuron.firing ? 2 : 0);
-      for (let i = 0; i < dendriteCount; i++) {
-        const angle = (i / dendriteCount) * Math.PI * 2;
-        const initialLength = 35 + (neuron.firing ? firingProgress * 10 : 0);
-        drawDendrite(neuron.x, neuron.y, angle, initialLength, 3, 1);
-      }
-      
-      // Draw soma (cell body) with subtle glow
-      const somaRadius = neuron.soma + (neuron.firing ? firingProgress * 1 : 0);
-      
-      if (neuron.firing) {
-        // Subtle outer glow
-        ctx.beginPath();
-        ctx.arc(neuron.x, neuron.y, somaRadius + 6, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(100, 180, 255, ${0.08 * (1 - firingProgress)})`;
-        ctx.fill();
-      }
-      
-      // Main soma - more subtle
-      ctx.beginPath();
-      ctx.arc(neuron.x, neuron.y, somaRadius, 0, Math.PI * 2);
-      
-      if (neuron.firing) {
-        ctx.fillStyle = `rgba(100, 180, 255, ${0.5})`;
-      } else {
-        ctx.fillStyle = 'rgba(120, 160, 220, 0.25)';
-      }
-      ctx.fill();
-      
-      // Very subtle soma border
-      ctx.strokeStyle = neuron.firing ? 'rgba(120, 180, 255, 0.4)' : 'rgba(140, 170, 220, 0.15)';
-      ctx.lineWidth = 0.5;
-      ctx.stroke();
     };
 
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      const currentTime = Date.now();
-      
-      // Update and draw neurons
-      for (let i = 0; i < neurons.length; i++) {
-        let n = neurons[i];
-        n.x += n.vx;
-        n.y += n.vy;
+      // Update and draw particles
+      for (let i = 0; i < particles.length; i++) {
+        let p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
 
         // Bounce off edges
-        if (n.x - 50 < 0 || n.x + 50 > canvas.width) n.vx = -n.vx;
-        if (n.y - 50 < 0 || n.y + 50 > canvas.height) n.vy = -n.vy;
+        if (p.x < 0 || p.x > canvas.width) p.vx = -p.vx;
+        if (p.y < 0 || p.y > canvas.height) p.vy = -p.vy;
 
-        // Clamp to bounds
-        n.x = Math.max(50, Math.min(canvas.width - 50, n.x));
-        n.y = Math.max(50, Math.min(canvas.height - 50, n.y));
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+        ctx.fill();
 
-        // Update firing state
-        if (n.firing) {
-          n.fireTime += 16;
-          if (n.fireTime >= n.fireDuration) {
-            n.firing = false;
-            n.fireTime = 0;
-            n.nextFireTime = currentTime + Math.random() * 5000 + 2000;
-          }
-        } else if (currentTime >= n.nextFireTime && Math.random() > 0.98) {
-          n.firing = true;
-          n.fireTime = 0;
-        }
-
-        drawNeuron(n);
-
-        // Connect neurons with synapses
-        for (let j = i + 1; j < neurons.length; j++) {
-          let n2 = neurons[j];
-          let dx = n.x - n2.x;
-          let dy = n.y - n2.y;
+        // Connect particles
+        for (let j = i + 1; j < particles.length; j++) {
+          let p2 = particles[j];
+          let dx = p.x - p2.x;
+          let dy = p.y - p2.y;
           let distance = Math.sqrt(dx * dx + dy * dy);
 
           if (distance < 150) {
             ctx.beginPath();
-            const baseOpacity = 0.08 - distance / 3000;
-            
-            // Synapse lights up when either neuron fires
-            if (n.firing || n2.firing) {
-              const progressN = n.firing ? n.fireTime / n.fireDuration : 0;
-              const progressN2 = n2.firing ? n2.fireTime / n2.fireDuration : 0;
-              const progress = Math.max(progressN, progressN2);
-              ctx.strokeStyle = `rgba(100, 180, 255, ${baseOpacity + 0.2 * (1 - progress)})`;
-              ctx.lineWidth = 1;
-            } else {
-              ctx.strokeStyle = `rgba(140, 170, 220, ${baseOpacity})`;
-              ctx.lineWidth = 0.3;
-            }
-            
-            ctx.moveTo(n.x, n.y);
-            ctx.lineTo(n2.x, n2.y);
+            ctx.strokeStyle = `rgba(255, 255, 255, ${0.15 - distance / 1000})`;
+            ctx.lineWidth = 0.5;
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p2.x, p2.y);
             ctx.stroke();
           }
         }
@@ -187,7 +88,6 @@ export default function App() {
       <canvas 
         ref={canvasRef} 
         className="fixed inset-0 z-0 pointer-events-none"
-        style={{ filter: 'blur(0.8px)' }}
       />
 
       {/* Sticky Navigation */}
@@ -306,7 +206,7 @@ export default function App() {
             <p className="text-sm text-gray-500 mb-6 font-semibold">May 2025 – Jul 2025</p>
             
             <ul className="list-disc list-outside ml-4 text-gray-300 space-y-3 leading-relaxed">
-              <li>Synthesized and characterized SnS₂ nanomaterials and fabricated memristive devices demonstrating synaptic plasticity (PPF, PPD, LTP, LTD).</li>
+              <li>Synthesized and characterized SnS2 nanomaterials and fabricated memristive devices demonstrating synaptic plasticity (PPF, PPD, LTP, LTD).</li>
               <li>Performed electrical characterization using probe stations and source-measure units; analysed device I-V characteristics and variability.</li>
               <li>Integrated experimentally measured device parameters into neural network models, achieving 95.5% classification accuracy on the MNIST dataset.</li>
             </ul>
@@ -350,7 +250,7 @@ export default function App() {
             {/* Paper 2 */}
             <div className="glow-hover bg-white/5 p-6 md:p-8 rounded-lg border border-white/10 hover:border-white/20 transition-all group">
               <h3 className="text-lg font-bold text-white leading-snug group-hover:text-blue-400 transition-colors">
-                Structural engineering of SnS₂ nanoflowers for neuromorphic applications
+                Structural engineering of SnS2 nanoflowers for neuromorphic applications
               </h3>
               <p className="text-gray-400 mt-3 text-sm leading-relaxed">
                 Megha Rana, Riya Malik, Mandvi Chauhan, <strong className="text-gray-200">Mayank Sharma</strong>, Ruchita Joshi, Omwati Rana, Suraj P. Khanna, Ritu Srivastava, Chandra Kant Suman*
