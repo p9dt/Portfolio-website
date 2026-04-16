@@ -98,8 +98,8 @@ export default function App() {
         <div className="hidden md:flex space-x-8 text-sm text-gray-400 font-medium">
           <a href="#home" className="hover:text-white transition-colors duration-300">home</a>
           <a href="#about" className="hover:text-white transition-colors duration-300">about</a>
-          <a href="#career" className="hover:text-white transition-colors duration-300">career</a>
-          <a href="#papers" className="hover:text-white transition-colors duration-300">papers</a>
+          <a href="#internship" className="hover:text-white transition-colors duration-300">internship</a>
+          <a href="#publications" className="hover:text-white transition-colors duration-300">publications</a>
           <a href="#projects" className="hover:text-white transition-colors duration-300">projects</a>
           <a href="#coursework" className="hover:text-white transition-colors duration-300">coursework</a>
         </div>
@@ -192,10 +192,10 @@ export default function App() {
         </div>
       </section>
 
-      {/* Career Section */}
-      <section id="career" className="relative z-10 py-24 border-t border-white/5 px-6 scroll-mt-16">
+      {/* Internship Section */}
+      <section id="internship" className="relative z-10 py-24 border-t border-white/5 px-6 scroll-mt-16">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-white mb-12 tracking-widest lowercase">career</h2>
+          <h2 className="text-3xl font-bold text-white mb-12 tracking-widest lowercase">internship</h2>
           
           <div className="border-l-2 border-white/20 pl-6 ml-4 relative">
             {/* Timeline dot */}
@@ -225,10 +225,10 @@ export default function App() {
         </div>
       </section>
 
-      {/* Papers Section */}
-      <section id="papers" className="relative z-10 py-24 border-t border-white/5 px-6 scroll-mt-16">
+      {/* Publications Section */}
+      <section id="publications" className="relative z-10 py-24 border-t border-white/5 px-6 scroll-mt-16">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-white mb-12 tracking-widest lowercase">papers</h2>
+          <h2 className="text-3xl font-bold text-white mb-12 tracking-widest lowercase">publications</h2>
           
           <div className="space-y-8">
             {/* Paper 1 */}
