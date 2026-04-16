@@ -306,7 +306,7 @@ export default function App() {
             {/* Project 3 */}
             <div className="glow-hover bg-white/5 p-6 rounded-lg border border-white/10 hover:border-white/20 transition-all flex flex-col h-full">
               <div className="flex justify-between items-start mb-4">
-                <h3 className="text-xl font-bold text-white">Quantum Visualizer - Advanced</h3>
+                <h3 className="text-xl font-bold text-white">Quantum Visualizer</h3>
               </div>
               <p className="text-sm text-gray-500 font-semibold mb-4">Personal Project • Apr 2026</p>
               <ul className="list-disc list-outside ml-4 text-gray-400 space-y-2 text-sm flex-grow">
