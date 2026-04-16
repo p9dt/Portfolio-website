@@ -96,12 +96,12 @@ export default function App() {
           Mayank
         </div>
         <div className="hidden md:flex space-x-8 text-sm text-gray-400 font-medium">
-          <a href="#home" className="hover:text-white transition-colors duration-300">home</a>
-          <a href="#about" className="hover:text-white transition-colors duration-300">about</a>
-          <a href="#internship" className="hover:text-white transition-colors duration-300">internship</a>
-          <a href="#publications" className="hover:text-white transition-colors duration-300">publications</a>
-          <a href="#projects" className="hover:text-white transition-colors duration-300">projects</a>
-          <a href="#coursework" className="hover:text-white transition-colors duration-300">coursework</a>
+          <a href="#home" className="hover:text-white transition-colors duration-300">Home</a>
+          <a href="#about" className="hover:text-white transition-colors duration-300">About</a>
+          <a href="#internship" className="hover:text-white transition-colors duration-300">Internship</a>
+          <a href="#publications" className="hover:text-white transition-colors duration-300">Publications</a>
+          <a href="#projects" className="hover:text-white transition-colors duration-300">Projects</a>
+          <a href="#coursework" className="hover:text-white transition-colors duration-300">Coursework</a>
         </div>
       </nav>
 
@@ -162,7 +162,7 @@ export default function App() {
       {/* About Section */}
       <section id="about" className="relative z-10 py-24 border-t border-white/5 px-6 scroll-mt-16">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-white mb-12 tracking-widest lowercase">about</h2>
+          <h2 className="text-3xl font-bold text-white mb-12 tracking-widest">About</h2>
           
           <div className="mb-12 glow-hover bg-white/5 p-6 rounded-lg border border-white/10">
             <p className="text-gray-300 leading-relaxed mb-4">
@@ -195,7 +195,7 @@ export default function App() {
       {/* Internship Section */}
       <section id="internship" className="relative z-10 py-24 border-t border-white/5 px-6 scroll-mt-16">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-white mb-12 tracking-widest lowercase">internship</h2>
+          <h2 className="text-3xl font-bold text-white mb-12 tracking-widest">Internship</h2>
           
           <div className="border-l-2 border-white/20 pl-6 ml-4 relative">
             {/* Timeline dot */}
@@ -228,7 +228,7 @@ export default function App() {
       {/* Publications Section */}
       <section id="publications" className="relative z-10 py-24 border-t border-white/5 px-6 scroll-mt-16">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-white mb-12 tracking-widest lowercase">publications</h2>
+          <h2 className="text-3xl font-bold text-white mb-12 tracking-widest">Publications</h2>
           
           <div className="space-y-8">
             {/* Paper 1 */}
@@ -269,7 +269,7 @@ export default function App() {
       {/* Projects Section */}
       <section id="projects" className="relative z-10 py-24 border-t border-white/5 px-6 scroll-mt-16">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-white mb-12 tracking-widest lowercase">projects</h2>
+          <h2 className="text-3xl font-bold text-white mb-12 tracking-widest">Projects</h2>
           
           <div className="grid md:grid-cols-2 gap-8">
             {/* Project 1 */}
@@ -309,7 +309,7 @@ export default function App() {
       {/* Coursework Section */}
       <section id="coursework" className="relative z-10 py-24 border-t border-white/5 px-6 scroll-mt-16">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-white mb-12 tracking-widest lowercase">coursework</h2>
+          <h2 className="text-3xl font-bold text-white mb-12 tracking-widest">Coursework</h2>
           
           <div className="space-y-10">
             {/* Physics Core */}
@@ -367,7 +367,7 @@ export default function App() {
       {/* Certifications & Technical Skills Section */}
       <section className="relative z-10 py-24 border-t border-white/5 px-6 scroll-mt-16">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-white mb-12 tracking-widest lowercase">certifications & skills</h2>
+          <h2 className="text-3xl font-bold text-white mb-12 tracking-widest">Certifications & Skills</h2>
           <div className="grid md:grid-cols-2 gap-12">
             <div>
               <h3 className="text-xl font-bold text-white mb-4">Certifications</h3>
