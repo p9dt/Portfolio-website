@@ -391,7 +391,7 @@ export default function App() {
                 <div>
                   <h4 className="text-gray-300 font-semibold mb-2">Experimental & Device Physics</h4>
                   <p className="text-gray-400 text-sm leading-relaxed">
-                    Memristive device fabrication, I-V analysis, device modelling, synaptic plasticity measurements (PPF, PPD, LTP, LTD).
+                    Memristive device fabrication, I-V analysis, device modelling, synaptic plasticity measurements (PPF, PPD, LTP, LTD), Thermal evaporator, Four probe measurement.
                   </p>
                 </div>
                 <div>
