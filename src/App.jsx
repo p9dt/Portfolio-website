@@ -127,7 +127,7 @@ export default function App() {
             Welcome to my portfolio!
           </h1>
           <p className="text-gray-400 mt-2 text-lg">
-            3rd year undergrad at IIT Dharwad pursuing Engineering Physics
+            4th year undergrad at IIT Dharwad pursuing Engineering Physics
           </p>
           
           {/* Social Icons */}
@@ -200,7 +200,37 @@ export default function App() {
           <div className="border-l-2 border-white/20 pl-6 ml-4 relative">
             {/* Timeline dot */}
             <div className="absolute w-4 h-4 bg-gray-400 rounded-full -left-[9px] top-2 border-4 border-[#0a0a0a]"></div>
-            
+
+            <h3 className="text-xl font-bold text-white">QIntern 2026 Research Intern</h3>
+            <h4 className="text-gray-400 mt-1 mb-2">QWorld • Remote</h4>
+            <p className="text-sm text-gray-500 mb-6 font-semibold">Jul 2026 – Aug 2026</p>
+
+            <ul className="list-disc list-outside ml-4 text-gray-300 space-y-3 leading-relaxed">
+              <li>Building a Hybrid Quantum Reservoir Temporal Graph Network (H-QTGN) for dynamic quantum-network prediction, titled "Quantum Reservoir Memory for Continuous-Time Temporal Graph Learning," mentored by Krishna Bhatia (primary) and Shalini Devendrababu (co-mentor).</li>
+              <li>Remote, collaborative research-and-implementation project spanning quantum reservoir computing, temporal graph networks, and event-stream prediction.</li>
+              <li>Deliverables: open-source prototype, reproducible experiments, dataset/simulator pipeline, final technical report, and mini-workshop presentation.</li>
+            </ul>
+          </div>
+
+          <div className="border-l-2 border-white/20 pl-6 ml-4 relative mt-12 pt-4">
+            {/* Timeline dot */}
+            <div className="absolute w-4 h-4 bg-gray-400 rounded-full -left-[9px] top-6 border-4 border-[#0a0a0a]"></div>
+
+            <h3 className="text-xl font-bold text-white">KRITI GRISHMA Summer Research Intern</h3>
+            <h4 className="text-gray-400 mt-1 mb-2">Indian Institute of Technology Kharagpur</h4>
+            <p className="text-sm text-gray-500 mb-6 font-semibold">May 2026 – Jul 2026</p>
+
+            <ul className="list-disc list-outside ml-4 text-gray-300 space-y-3 leading-relaxed">
+              <li>Carried out first-principles (DFT) investigations of 2D materials for ion-battery and hydrogen-generation applications, titled "2D Materials for Energy Applications: A First-Principles Study," analysing ion adsorption energetics, diffusion pathways, and migration barriers in candidate electrode materials.</li>
+              <li>Evaluated electrochemical performance (voltage profiles, capacity, structural stability) and HER/OER catalytic activity via adsorption free-energy and reaction-pathway analysis.</li>
+              <li>Studied electronic-structure origins of ion transport and catalytic efficiency, and explored defect engineering, strain tuning, and heterostructure design to establish structure–property correlations for scalable, low-cost energy materials.</li>
+            </ul>
+          </div>
+
+          <div className="border-l-2 border-white/20 pl-6 ml-4 relative mt-12 pt-4">
+            {/* Timeline dot */}
+            <div className="absolute w-4 h-4 bg-gray-400 rounded-full -left-[9px] top-2 border-4 border-[#0a0a0a]"></div>
+
             <h3 className="text-xl font-bold text-white">IASC-INSA-NASI Summer Research Fellow</h3>
             <h4 className="text-gray-400 mt-1 mb-2">CSIR-National Physical Laboratory (NPL) • New Delhi, India</h4>
             <p className="text-sm text-gray-500 mb-6 font-semibold">May 2025 – Jul 2025</p>
@@ -315,6 +345,53 @@ export default function App() {
                 <li>Features operation history tracking, gate statistics, save/load circuit functionality, and detailed Qiskit circuit visualization.</li>
               </ul>
               <a href="https://github.com/p9dt/Quantum-Visualizer-" target="_blank" rel="noreferrer" className="mt-6 flex items-center gap-2 text-sm text-blue-400 hover:text-blue-300 transition-colors">
+                View on GitHub <ExternalLink size={14} />
+              </a>
+            </div>
+
+            {/* Project 4 */}
+            <div className="glow-hover bg-white/5 p-6 rounded-lg border border-white/10 hover:border-white/20 transition-all flex flex-col h-full">
+              <div className="flex justify-between items-start mb-4">
+                <h3 className="text-xl font-bold text-white">Memristor-Aware SNN</h3>
+              </div>
+              <p className="text-sm text-gray-500 font-semibold mb-4">Personal Project • 2026</p>
+              <ul className="list-disc list-outside ml-4 text-gray-400 space-y-2 text-sm flex-grow">
+                <li>Trained a spiking neural network (SNN) with surrogate-gradient descent in snnTorch, then deployed it on a simulated memristor crossbar built from measured SnS2 device non-idealities (CSIR-NPL).</li>
+                <li>Quantified the accuracy/energy trade-off of running a trained classifier on non-ideal physical hardware versus ideal software weights.</li>
+                <li>Full-stack neuromorphic pipeline: fabricated device → measured I-V data → crossbar model → trained classifier.</li>
+              </ul>
+              <a href="https://github.com/p9dt/memristor-aware-snn" target="_blank" rel="noreferrer" className="mt-6 flex items-center gap-2 text-sm text-blue-400 hover:text-blue-300 transition-colors">
+                View on GitHub <ExternalLink size={14} />
+              </a>
+            </div>
+
+            {/* Project 5 */}
+            <div className="glow-hover bg-white/5 p-6 rounded-lg border border-white/10 hover:border-white/20 transition-all flex flex-col h-full">
+              <div className="flex justify-between items-start mb-4">
+                <h3 className="text-xl font-bold text-white">SNN Learning — ANN vs SNN</h3>
+              </div>
+              <p className="text-sm text-gray-500 font-semibold mb-4">Personal Project • 2026</p>
+              <ul className="list-disc list-outside ml-4 text-gray-400 space-y-2 text-sm flex-grow">
+                <li>Built a 4-notebook series comparing spiking neural networks against equivalent ANNs on MNIST, from a single LIF neuron up to spiking CNNs.</li>
+                <li>Covered rate coding, surrogate gradients, and BPTT, benchmarking accuracy, parameter count, and spike sparsity as an energy proxy against classical baselines.</li>
+              </ul>
+              <a href="https://github.com/p9dt/snn-learning" target="_blank" rel="noreferrer" className="mt-6 flex items-center gap-2 text-sm text-blue-400 hover:text-blue-300 transition-colors">
+                View on GitHub <ExternalLink size={14} />
+              </a>
+            </div>
+
+            {/* Project 6 */}
+            <div className="glow-hover bg-white/5 p-6 rounded-lg border border-white/10 hover:border-white/20 transition-all flex flex-col h-full">
+              <div className="flex justify-between items-start mb-4">
+                <h3 className="text-xl font-bold text-white">Quantum Reservoir Computing — Benchmarks</h3>
+              </div>
+              <p className="text-sm text-gray-500 font-semibold mb-4">Personal Project • 2026</p>
+              <ul className="list-disc list-outside ml-4 text-gray-400 space-y-2 text-sm flex-grow">
+                <li>Benchmarked a transverse-field Ising quantum reservoir (PennyLane) against a classical Echo State Network on short-term memory capacity and NARMA10.</li>
+                <li>Implemented fading memory, memory-capacity curves, and a reset-and-encode input scheme with a linear ridge-regression readout, formalizing QRC evaluation beyond toy demos.</li>
+                <li>Companion project to Memristor-Aware SNN: physical and quantum substrates for brain-inspired computing.</li>
+              </ul>
+              <a href="https://github.com/p9dt/quantum-reservoir-computing" target="_blank" rel="noreferrer" className="mt-6 flex items-center gap-2 text-sm text-blue-400 hover:text-blue-300 transition-colors">
                 View on GitHub <ExternalLink size={14} />
               </a>
             </div>
